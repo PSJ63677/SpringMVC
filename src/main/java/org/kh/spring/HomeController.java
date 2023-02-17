@@ -22,19 +22,12 @@ public class HomeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)	// handler mapping
-	public String home(Locale locale, Model model) {		//  url /로 입력하면 home.jsp를 실행하겠다
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		// request.setAttribute와 같은 역할
-		
-		return "home";	// servlet-context.xml viewreslve로 감
+	@RequestMapping(value = "/home.do", method = RequestMethod.GET)	// handler mapping
+	public String home(Locale locale, Model model) {
+		// DB에서 가져온 값
+		// model에서 addAttribute해주면
+		// main화면으로 사용가능
+		return "home";
 	}
 	
 }
